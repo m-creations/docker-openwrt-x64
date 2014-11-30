@@ -35,4 +35,8 @@ docker build -t mcreations/openwrt-x64:$release .
 
 docker run -it --rm mcreations/openwrt-x64:$release opkg update
 
+git add -u
+
+git commit -m "Updating rootfs to release $release"
+
 git tag -f -m "Tagging $release" -a $release
