@@ -2,17 +2,15 @@
 
 release=$1
 
-wget https://github.com/m-creations/openwrt/releases/download/$release/openwrt-x86_64-rootfs.tar.gz
+wget https://github.com/m-creations/openwrt/releases/download/$release/openwrt-$release-x86-64-rootfs.tar.gz
 
-mv -f openwrt-x86_64-rootfs.tar.gz image/
+mv -f openwrt-$release-x86-64-rootfs.tar.gz image/
 
 rm -rf image/tmp
 
 mkdir image/tmp
 
-tar xzv -C image/tmp -f image/openwrt-x86_64-rootfs.tar.gz 
-
-mkdir image/tmp/tmp/{log,lock}
+tar xzv -C image/tmp -f image/openwrt-$release-x86-64-rootfs.tar.gz
 
 rm image/tmp/lib/modules/*/*
 
@@ -25,9 +23,9 @@ alias pu=pushd
 alias md=mkdir
 EOF
 
-rm image/openwrt-x86_64-rootfs.tar.gz
+rm image/openwrt-x86-64-rootfs.tar.gz
 
-tar czv -C image/tmp -f image/openwrt-x86_64-rootfs.tar.gz .
+tar czv -C image/tmp -f image/openwrt-x86-64-rootfs.tar.gz .
 
 rm -rf image/tmp/
 
