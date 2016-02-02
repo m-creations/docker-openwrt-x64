@@ -8,12 +8,7 @@ CMD ["/bin/bash"]
 ADD image/openwrt-x86-64-rootfs.tar.gz /
 ADD image/root /
 
-RUN echo "4" > /tmp/debug_level &&\
-    rm /lib/preinit/* &&\
-    echo > /lib/preinit/00_empty_dummy_script &&\
-    ln -sf /dev/tty /dev/kmsg &&\
-    chown -R root:root /sbin/ /etc/inittab /lib/ &&\
-    /etc/init.d/cron disable &&\
+RUN /etc/init.d/cron disable &&\
     /etc/init.d/gpio_switch disable &&\
     /etc/init.d/led disable &&\
     /etc/init.d/network disable &&\

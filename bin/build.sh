@@ -32,6 +32,10 @@ sed -ie "s#http.*#https://openwrt.m-creations.net/${release}/${target}/${subtarg
 ln -rs image/tmp/dev/tty image/tmp/dev/kmsg
 chown root:root image/tmp/dev/kmsg
 
+echo "4" > image/tmp/tmp/debug_level
+rm -rf image/tmp/lib/preinit/*
+echo > /lib/preinit/00_empty_dummy_script
+
 rm -f image/openwrt-x86-64-rootfs.tar.gz
 
 tar czv -C image/tmp -f image/openwrt-x86-64-rootfs.tar.gz .
